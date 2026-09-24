@@ -1,92 +1,502 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Convite Especial</title>
-<style>
-* {
-box-sizing: border-box;
-margin: 0;
-padding: 0;
-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-body {
-background-color: #121212;
-display: flex;
-justify-content: center;
-align-items: center;
-min-height: 100vh;
-}
-/* Container simulando a tela do smartphone */
-.phone-container {
-width: 360px;
-height: 700px;
-background: linear-gradient(180deg, #d32f2f 0%, #8e0000 100%);
-border-radius: 40px;
-box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-position: relative;
-overflow: hidden;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-padding: 20px;
-border: 8px solid #222;
-}
-/* Notch do topo */
-.phone-container::before {
-content: '';
-position: absolute;
-top: 10px;
-width: 120px;
-height: 25px;
-background-color: #222;
-border-radius: 15px;
-z-index: 10;
-}
-.screen {
-width: 100%;
-height: 100%;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-text-align: center;
-color: white;
-z-index: 2;
-}
-.hidden {
-display: none !important;
-}
-.emoji {
-font-size: 80px;
-margin-bottom: 20px;
-}
-h2 {
-font-size: 1.4rem;
-margin-bottom: 20px;
-text-transform: uppercase;
-font-weight: 800;
-letter-spacing: 1px;
-}
-.btn-group {
-display: flex;
-gap: 15px;
-margin-top: 20px;
-position: relative;
-width: 100%;
-justify-content: center;
-}
-button, .btn {
-background-color: #ffffff;
-color: #d32f2f;
-border: none;
-padding: 12px 24px;
-font-size: 1rem;
-font-weight: bold;
-border-radius: 25px;
-cursor: pointer;
-box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-transition: transform 0.1s;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Convite Especial</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            padding: 20px;
+            background: radial-gradient(
+                circle at top,
+                #5e1515 0%,
+                #121212 55%
+            );
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .phone-container {
+            width: 100%;
+            max-width: 390px;
+            min-height: 720px;
+            background: linear-gradient(
+                180deg,
+                #d32f2f 0%,
+                #780000 100%
+            );
+            border: 8px solid #222;
+            border-radius: 40px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .phone-container::before {
+            content: "";
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 25px;
+            background-color: #222;
+            border-radius: 15px;
+            z-index: 20;
+        }
+
+        .screen {
+            width: 100%;
+            min-height: 704px;
+            padding: 55px 22px 30px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            animation: aparecer 0.5s ease;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .emoji {
+            font-size: 78px;
+            margin-bottom: 20px;
+            animation: pulsar 1.6s infinite;
+        }
+
+        @keyframes pulsar {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.12);
+            }
+        }
+
+        h1,
+        h2 {
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h1 {
+            font-size: 1.55rem;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+        }
+
+        .subtitulo {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 18px;
+            opacity: 0.95;
+        }
+
+        .btn-group {
+            position: relative;
+            width: 100%;
+            min-height: 135px;
+            margin-top: 15px;
+        }
+
+        button {
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition:
+                transform 0.2s,
+                box-shadow 0.2s,
+                background-color 0.2s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        .btn-sim {
+            position: absolute;
+            left: calc(50% - 115px);
+            top: 25px;
+            background-color: #ffffff;
+            color: #b00000;
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-nao {
+            position: absolute;
+            left: calc(50% + 25px);
+            top: 25px;
+            background-color: #292929;
+            color: #ffffff;
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
+            transition:
+                left 0.18s ease,
+                top 0.18s ease;
+            z-index: 10;
+        }
+
+        .mensagem-erro {
+            min-height: 25px;
+            margin-top: 8px;
+            color: #fff3a6;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .barra-progresso {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 18px;
+        }
+
+        .etapa {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.25);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+
+        .etapa.ativa {
+            color: #b00000;
+            background-color: white;
+        }
+
+        .linha {
+            width: 35px;
+            height: 3px;
+            background-color: rgba(255, 255, 255, 0.35);
+        }
+
+        .linha.ativa {
+            background-color: white;
+        }
+
+        .calendario {
+            width: 100%;
+            padding: 14px;
+            margin-top: 10px;
+            color: #333;
+            background-color: rgba(255, 255, 255, 0.97);
+            border-radius: 18px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .calendario-topo {
+            color: #a60000;
+            font-weight: 800;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .dias-semana,
+        .dias-mes {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+        }
+
+        .dias-semana div {
+            padding: 5px 0;
+            font-size: 0.72rem;
+            font-weight: 800;
+            color: #888;
+        }
+
+        .dia {
+            aspect-ratio: 1;
+            min-width: 0;
+            padding: 0;
+            border-radius: 10px;
+            background-color: #f2f2f2;
+            color: #444;
+            font-size: 0.82rem;
+            box-shadow: none;
+        }
+
+        .dia:hover {
+            color: white;
+            background-color: #d32f2f;
+        }
+
+        .dia.selecionado {
+            color: white;
+            background-color: #a60000;
+            transform: scale(1.06);
+            box-shadow: 0 4px 10px rgba(166, 0, 0, 0.35);
+        }
+
+        .dia-vazio {
+            aspect-ratio: 1;
+        }
+
+        .secao-horario {
+            width: 100%;
+            margin-top: 18px;
+        }
+
+        .secao-horario label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        #horario {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid white;
+            border-radius: 14px;
+            background-color: rgba(255, 255, 255, 0.95);
+            color: #333;
+            font-size: 1rem;
+            text-align: center;
+            outline: none;
+        }
+
+        .btn-continuar,
+        .btn-finalizar,
+        .btn-recomecar {
+            width: 100%;
+            margin-top: 18px;
+            color: #b00000;
+            background-color: white;
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25);
+        }
+
+        .btn-continuar:disabled,
+        .btn-finalizar:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .erro-etapa {
+            min-height: 22px;
+            margin-top: 10px;
+            color: #fff3a6;
+            font-weight: 700;
+            font-size: 0.86rem;
+        }
+
+        .opcoes-jantar {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .opcao-jantar {
+            min-height: 110px;
+            padding: 12px 8px;
+            color: #333;
+            background-color: rgba(255, 255, 255, 0.95);
+            border: 3px solid transparent;
+            border-radius: 18px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+        }
+
+        .opcao-jantar:hover {
+            background-color: white;
+        }
+
+        .opcao-jantar.selecionado {
+            color: #9c0000;
+            border-color: #ffe066;
+            background-color: #fff8dd;
+            transform: scale(1.03);
+        }
+
+        .icone-jantar {
+            display: block;
+            font-size: 2rem;
+            margin-bottom: 6px;
+        }
+
+        .nome-jantar {
+            font-size: 0.83rem;
+            line-height: 1.2;
+            font-weight: 800;
+        }
+
+        .resumo {
+            width: 100%;
+            padding: 20px;
+            margin-top: 15px;
+            color: #333;
+            background-color: rgba(255, 255, 255, 0.97);
+            border-radius: 20px;
+            text-align: left;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .resumo-item {
+            padding: 12px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .resumo-item:last-child {
+            border-bottom: none;
+        }
+
+        .resumo-titulo {
+            display: block;
+            margin-bottom: 4px;
+            color: #a60000;
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .resumo-valor {
+            font-weight: 700;
+        }
+
+        .agradecimento {
+            margin-top: 18px;
+            line-height: 1.5;
+            font-weight: 600;
+        }
+
+        .coracoes {
+            margin-top: 14px;
+            font-size: 1.6rem;
+            animation: pulsar 1.5s infinite;
+        }
+
+        @media (max-width: 420px) {
+            body {
+                padding: 0;
+                background-color: #780000;
+            }
+
+            .phone-container {
+                max-width: none;
+                min-height: 100vh;
+                border: none;
+                border-radius: 0;
+            }
+
+            .phone-container::before {
+                display: none;
+            }
+
+            .screen {
+                min-height: 100vh;
+                padding-top: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="phone-container">
+
+        <!-- TELA INICIAL -->
+
+        <section class="screen" id="telaConvite">
+
+            <div class="emoji">❤️</div>
+
+            <h1>Convite especial</h1>
+
+            <p class="subtitulo">
+                Preparei uma noite especial para nós.
+                Você aceita sair comigo?
+            </p>
+
+            <div class="btn-group" id="areaBotoes">
+
+                <button
+                    type="button"
+                    class="btn-sim"
+                    onclick="aceitarConvite()"
+                >
+                    SIM 😍
+                </button>
+
+                <button
+                    type="button"
+                    class="btn-nao"
+                    id="btnNao"
+                    onclick="clicouNoNao()"
+                    onmouseenter="fugirDoMouse()"
+                >
+                    NÃO
+                </button>
+
+            </div>
+
+            <p class="mensagem-erro" id="mensagemErro"></p>
+
+        </section>
+
+        <!-- TELA DO CALENDÁRIO -->
+
+        <section class="screen hidden" id="telaCalendario">
+
+            <div class="barra-progresso">
+                <div class="etapa ativa">1</div>
+                <div class="linha"></div>
+                <div class="etapa">2</div>
+                <div class="linha"></div>
+                <div class="etapa">3</div>
+            </div>
+
+            <h2>Escolha nossa data</h2>
+
+            <p class="subtitulo">
+                Selecione um dia de novembro de 2026 e o melhor horário.
+            </p>
+
+            <div class="calendario">
+
+                <div class="calendario-topo">
+                    Novembro de 2026
+       
