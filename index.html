@@ -499,4 +499,501 @@
 
                 <div class="calendario-topo">
                     Novembro de 2026
-       
+                </div>
+
+                <div class="dias-semana">
+                    <div>DOM</div>
+                    <div>SEG</div>
+                    <div>TER</div>
+                    <div>QUA</div>
+                    <div>QUI</div>
+                    <div>SEX</div>
+                    <div>SÁB</div>
+                </div>
+
+                <div class="dias-mes" id="diasMes"></div>
+
+            </div>
+
+            <div class="secao-horario">
+
+                <label for="horario">
+                    Escolha o horário:
+                </label>
+
+                <select id="horario" onchange="validarDataHorario()">
+                    <option value="">Selecione um horário</option>
+                    <option value="18:00">18:00</option>
+                    <option value="18:30">18:30</option>
+                    <option value="19:00">19:00</option>
+                    <option value="19:30">19:30</option>
+                    <option value="20:00">20:00</option>
+                    <option value="20:30">20:30</option>
+                    <option value="21:00">21:00</option>
+                    <option value="21:30">21:30</option>
+                    <option value="22:00">22:00</option>
+                </select>
+
+            </div>
+
+            <p class="erro-etapa" id="erroCalendario"></p>
+
+            <button
+                type="button"
+                class="btn-continuar"
+                id="btnContinuarCalendario"
+                onclick="irParaJantar()"
+                disabled
+            >
+                Continuar 🍽️
+            </button>
+
+        </section>
+
+        <!-- TELA DAS OPÇÕES DE JANTAR -->
+
+        <section class="screen hidden" id="telaJantar">
+
+            <div class="barra-progresso">
+                <div class="etapa ativa">1</div>
+                <div class="linha ativa"></div>
+                <div class="etapa ativa">2</div>
+                <div class="linha"></div>
+                <div class="etapa">3</div>
+            </div>
+
+            <h2>O que vamos jantar?</h2>
+
+            <p class="subtitulo">
+                Escolha o tipo de jantar que mais combina com a nossa noite.
+            </p>
+
+            <div class="opcoes-jantar">
+
+                <button
+                    type="button"
+                    class="opcao-jantar"
+                    data-jantar="Jantar italiano"
+                    data-icone="🍝"
+                    onclick="selecionarJantar(this)"
+                >
+                    <span class="icone-jantar">🍝</span>
+                    <span class="nome-jantar">Jantar italiano</span>
+                </button>
+
+                <button
+                    type="button"
+                    class="opcao-jantar"
+                    data-jantar="Sushi e comida japonesa"
+                    data-icone="🍣"
+                    onclick="selecionarJantar(this)"
+                >
+                    <span class="icone-jantar">🍣</span>
+                    <span class="nome-jantar">Japonês</span>
+                </button>
+
+                <button
+                    type="button"
+                    class="opcao-jantar"
+                    data-jantar="Hambúrguer artesanal"
+                    data-icone="🍔"
+                    onclick="selecionarJantar(this)"
+                >
+                    <span class="icone-jantar">🍔</span>
+                    <span class="nome-jantar">Hambúrguer</span>
+                </button>
+
+                <button
+                    type="button"
+                    class="opcao-jantar"
+                    data-jantar="Fondue para casal"
+                    data-icone="🫕"
+                    onclick="selecionarJantar(this)"
+                >
+                    <span class="icone-jantar">🫕</span>
+                    <span class="nome-jantar">Fondue</span>
+                </button>
+
+                <button
+                    type="button"
+                    class="opcao-jantar"
+                    data-jantar="Pizza especial"
+                    data-icone="🍕"
+                    onclick="selecionarJantar(this)"
+                >
+                    <span class="icone-jantar">🍕</span>
+                    <span class="nome-jantar">Pizza</span>
+                </button>
+
+                <button
+                    type="button"
+                    class="opcao-jantar"
+                    data-jantar="Surpresa do chef"
+                    data-icone="👨‍🍳"
+                    onclick="selecionarJantar(this)"
+                >
+                    <span class="icone-jantar">👨‍🍳</span>
+                    <span class="nome-jantar">Surpresa do chef</span>
+                </button>
+
+            </div>
+
+            <p class="erro-etapa" id="erroJantar"></p>
+
+            <button
+                type="button"
+                class="btn-finalizar"
+                id="btnFinalizar"
+                onclick="mostrarResumo()"
+                disabled
+            >
+                Finalizar escolha ❤️
+            </button>
+
+        </section>
+
+        <!-- TELA DO RESUMO -->
+
+        <section class="screen hidden" id="telaResumo">
+
+            <div class="barra-progresso">
+                <div class="etapa ativa">1</div>
+                <div class="linha ativa"></div>
+                <div class="etapa ativa">2</div>
+                <div class="linha ativa"></div>
+                <div class="etapa ativa">3</div>
+            </div>
+
+            <div class="emoji">🥰</div>
+
+            <h2>Encontro confirmado!</h2>
+
+            <div class="resumo">
+
+                <div class="resumo-item">
+                    <span class="resumo-titulo">
+                        Data escolhida
+                    </span>
+
+                    <span
+                        class="resumo-valor"
+                        id="resumoData"
+                    ></span>
+                </div>
+
+                <div class="resumo-item">
+                    <span class="resumo-titulo">
+                        Horário
+                    </span>
+
+                    <span
+                        class="resumo-valor"
+                        id="resumoHorario"
+                    ></span>
+                </div>
+
+                <div class="resumo-item">
+                    <span class="resumo-titulo">
+                        Tipo de jantar
+                    </span>
+
+                    <span
+                        class="resumo-valor"
+                        id="resumoJantar"
+                    ></span>
+                </div>
+
+            </div>
+
+            <p class="agradecimento">
+                Beatriz, o Fernando cuidará de tudo perfeitamente
+                como você escolheu. ❤️
+            </p>
+
+            <div class="coracoes">
+                ❤️ ✨ ❤️
+            </div>
+
+            <button
+                type="button"
+                class="btn-recomecar"
+                onclick="reiniciarConvite()"
+            >
+                Escolher novamente
+            </button>
+
+        </section>
+
+    </main>
+
+    <script>
+        let diaSelecionado = null;
+        let horarioSelecionado = "";
+        let jantarSelecionado = "";
+        let iconeJantarSelecionado = "";
+
+        const btnNao = document.getElementById("btnNao");
+        const areaBotoes = document.getElementById("areaBotoes");
+        const mensagemErro = document.getElementById("mensagemErro");
+
+        function mostrarTela(idTela) {
+            const telas = document.querySelectorAll(".screen");
+
+            telas.forEach(function (tela) {
+                tela.classList.add("hidden");
+            });
+
+            const telaSelecionada =
+                document.getElementById(idTela);
+
+            telaSelecionada.classList.remove("hidden");
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+
+        function aceitarConvite() {
+            mensagemErro.textContent = "";
+
+            gerarCalendario();
+
+            mostrarTela("telaCalendario");
+        }
+
+        function fugirDoMouse() {
+            const larguraArea = areaBotoes.clientWidth;
+            const alturaArea = areaBotoes.clientHeight;
+
+            const larguraBotao = btnNao.offsetWidth;
+            const alturaBotao = btnNao.offsetHeight;
+
+            const limiteX = Math.max(
+                0,
+                larguraArea - larguraBotao
+            );
+
+            const limiteY = Math.max(
+                0,
+                alturaArea - alturaBotao
+            );
+
+            const novaPosicaoX = Math.random() * limiteX;
+            const novaPosicaoY = Math.random() * limiteY;
+
+            btnNao.style.left = novaPosicaoX + "px";
+            btnNao.style.top = novaPosicaoY + "px";
+
+            mensagemErro.textContent =
+                "Que isso, Beatriz? Clica no outro kkk 😂";
+        }
+
+        function clicouNoNao() {
+            mensagemErro.textContent =
+                "Que isso, Beatriz? Clica no outro kkk 😂";
+
+            fugirDoMouse();
+        }
+
+        function gerarCalendario() {
+            const containerDias =
+                document.getElementById("diasMes");
+
+            containerDias.innerHTML = "";
+
+            const ano = 2026;
+            const mesNovembro = 10;
+
+            const primeiroDia = new Date(
+                ano,
+                mesNovembro,
+                1
+            ).getDay();
+
+            const quantidadeDias = new Date(
+                ano,
+                mesNovembro + 1,
+                0
+            ).getDate();
+
+            for (
+                let espaco = 0;
+                espaco < primeiroDia;
+                espaco++
+            ) {
+                const diaVazio =
+                    document.createElement("div");
+
+                diaVazio.className = "dia-vazio";
+
+                containerDias.appendChild(diaVazio);
+            }
+
+            for (
+                let dia = 1;
+                dia <= quantidadeDias;
+                dia++
+            ) {
+                const botaoDia =
+                    document.createElement("button");
+
+                botaoDia.type = "button";
+                botaoDia.className = "dia";
+                botaoDia.textContent = dia;
+
+                botaoDia.addEventListener(
+                    "click",
+                    function () {
+                        selecionarDia(dia, botaoDia);
+                    }
+                );
+
+                containerDias.appendChild(botaoDia);
+            }
+        }
+
+        function selecionarDia(dia, elemento) {
+            const todosOsDias =
+                document.querySelectorAll(".dia");
+
+            todosOsDias.forEach(function (botao) {
+                botao.classList.remove("selecionado");
+            });
+
+            elemento.classList.add("selecionado");
+
+            diaSelecionado = dia;
+
+            document.getElementById(
+                "erroCalendario"
+            ).textContent = "";
+
+            validarDataHorario();
+        }
+
+        function validarDataHorario() {
+            const horario =
+                document.getElementById("horario").value;
+
+            const botaoContinuar =
+                document.getElementById(
+                    "btnContinuarCalendario"
+                );
+
+            horarioSelecionado = horario;
+
+            if (diaSelecionado && horarioSelecionado) {
+                botaoContinuar.disabled = false;
+
+                document.getElementById(
+                    "erroCalendario"
+                ).textContent = "";
+            } else {
+                botaoContinuar.disabled = true;
+            }
+        }
+
+        function irParaJantar() {
+            if (!diaSelecionado || !horarioSelecionado) {
+                document.getElementById(
+                    "erroCalendario"
+                ).textContent =
+                    "Escolha o dia e o horário para continuar.";
+
+                return;
+            }
+
+            mostrarTela("telaJantar");
+        }
+
+        function selecionarJantar(elemento) {
+            const opcoes =
+                document.querySelectorAll(".opcao-jantar");
+
+            opcoes.forEach(function (opcao) {
+                opcao.classList.remove("selecionado");
+            });
+
+            elemento.classList.add("selecionado");
+
+            jantarSelecionado =
+                elemento.dataset.jantar;
+
+            iconeJantarSelecionado =
+                elemento.dataset.icone;
+
+            document.getElementById(
+                "btnFinalizar"
+            ).disabled = false;
+
+            document.getElementById(
+                "erroJantar"
+            ).textContent = "";
+        }
+
+        function mostrarResumo() {
+            if (!jantarSelecionado) {
+                document.getElementById(
+                    "erroJantar"
+                ).textContent =
+                    "Escolha uma opção de jantar.";
+
+                return;
+            }
+
+            document.getElementById(
+                "resumoData"
+            ).textContent =
+                diaSelecionado + " de novembro de 2026";
+
+            document.getElementById(
+                "resumoHorario"
+            ).textContent =
+                horarioSelecionado;
+
+            document.getElementById(
+                "resumoJantar"
+            ).textContent =
+                iconeJantarSelecionado +
+                " " +
+                jantarSelecionado;
+
+            mostrarTela("telaResumo");
+        }
+
+        function reiniciarConvite() {
+            diaSelecionado = null;
+            horarioSelecionado = "";
+            jantarSelecionado = "";
+            iconeJantarSelecionado = "";
+
+            document.getElementById(
+                "horario"
+            ).value = "";
+
+            document.getElementById(
+                "btnContinuarCalendario"
+            ).disabled = true;
+
+            document.getElementById(
+                "btnFinalizar"
+            ).disabled = true;
+
+            document.querySelectorAll(
+                ".opcao-jantar"
+            ).forEach(function (opcao) {
+                opcao.classList.remove("selecionado");
+            });
+
+            mensagemErro.textContent = "";
+
+            btnNao.style.left = "calc(50% + 25px)";
+            btnNao.style.top = "25px";
+
+            mostrarTela("telaConvite");
+        }
+    </script>
+
+</body>
+</html>
