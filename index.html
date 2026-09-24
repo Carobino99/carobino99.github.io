@@ -2,7 +2,11 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+    >
 
     <title>Convite Especial</title>
 
@@ -12,16 +16,19 @@
             margin: 0;
             padding: 0;
             font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html,
+        body {
+            min-height: 100%;
         }
 
         body {
             min-height: 100vh;
             padding: 20px;
-            background: radial-gradient(
-                circle at top,
-                #5e1515 0%,
-                #121212 55%
-            );
+            background:
+                radial-gradient(circle at top, #661818 0%, #121212 58%);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -31,16 +38,13 @@
             width: 100%;
             max-width: 390px;
             min-height: 720px;
-            background: linear-gradient(
-                180deg,
-                #d32f2f 0%,
-                #780000 100%
-            );
+            position: relative;
+            overflow: hidden;
+            background:
+                linear-gradient(180deg, #d32f2f 0%, #780000 100%);
             border: 8px solid #222;
             border-radius: 40px;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65);
-            position: relative;
-            overflow: hidden;
         }
 
         .phone-container::before {
@@ -48,11 +52,11 @@
             position: absolute;
             top: 10px;
             left: 50%;
-            transform: translateX(-50%);
             width: 120px;
             height: 25px;
             background-color: #222;
             border-radius: 15px;
+            transform: translateX(-50%);
             z-index: 20;
         }
 
@@ -60,13 +64,13 @@
             width: 100%;
             min-height: 704px;
             padding: 55px 22px 30px;
-            color: white;
+            color: #fff;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            animation: aparecer 0.5s ease;
+            animation: aparecer 0.45s ease;
         }
 
         .hidden {
@@ -76,19 +80,13 @@
         @keyframes aparecer {
             from {
                 opacity: 0;
-                transform: translateY(15px);
+                transform: translateY(14px);
             }
 
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
-        }
-
-        .emoji {
-            font-size: 78px;
-            margin-bottom: 20px;
-            animation: pulsar 1.6s infinite;
         }
 
         @keyframes pulsar {
@@ -102,6 +100,12 @@
             }
         }
 
+        .emoji {
+            margin-bottom: 20px;
+            font-size: 76px;
+            animation: pulsar 1.6s infinite;
+        }
+
         h1,
         h2 {
             text-transform: uppercase;
@@ -109,36 +113,33 @@
         }
 
         h1 {
-            font-size: 1.55rem;
             margin-bottom: 15px;
+            font-size: 1.55rem;
         }
 
         h2 {
-            font-size: 1.25rem;
             margin-bottom: 12px;
+            font-size: 1.25rem;
         }
 
         .subtitulo {
-            font-size: 0.95rem;
-            line-height: 1.5;
             margin-bottom: 18px;
-            opacity: 0.95;
+            font-size: 0.96rem;
+            line-height: 1.5;
         }
 
-        .btn-group {
-            position: relative;
-            width: 100%;
-            min-height: 135px;
-            margin-top: 15px;
+        button,
+        select {
+            font: inherit;
         }
 
         button {
+            padding: 12px 24px;
             border: none;
-            padding: 12px 25px;
             border-radius: 25px;
             font-weight: 700;
-            font-size: 1rem;
             cursor: pointer;
+            touch-action: manipulation;
             transition:
                 transform 0.2s,
                 box-shadow 0.2s,
@@ -146,87 +147,98 @@
         }
 
         button:hover {
-            transform: scale(1.05);
+            transform: scale(1.04);
+        }
+
+        .btn-group {
+            position: relative;
+            width: 100%;
+            height: 160px;
+            margin-top: 12px;
+        }
+
+        .btn-sim,
+        .btn-nao {
+            position: absolute;
+            top: 25px;
+            white-space: nowrap;
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
         }
 
         .btn-sim {
-            position: absolute;
-            left: calc(50% - 115px);
-            top: 25px;
-            background-color: #ffffff;
-            color: #b00000;
-            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
+            left: calc(50% - 120px);
+            color: #a00000;
+            background-color: #fff;
+            z-index: 5;
         }
 
         .btn-nao {
-            position: absolute;
-            left: calc(50% + 25px);
-            top: 25px;
+            left: calc(50% + 26px);
+            color: #fff;
             background-color: #292929;
-            color: #ffffff;
-            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
-            transition:
-                left 0.18s ease,
-                top 0.18s ease;
             z-index: 10;
+            transition:
+                left 0.15s ease,
+                top 0.15s ease;
         }
 
         .mensagem-erro {
-            min-height: 25px;
-            margin-top: 8px;
+            min-height: 45px;
+            margin-top: 2px;
             color: #fff3a6;
+            font-size: 0.94rem;
             font-weight: 700;
-            font-size: 0.9rem;
+            line-height: 1.4;
         }
 
         .barra-progresso {
+            margin-bottom: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 18px;
         }
 
         .etapa {
-            width: 28px;
-            height: 28px;
+            width: 29px;
+            height: 29px;
             border-radius: 50%;
             background-color: rgba(255, 255, 255, 0.25);
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             font-size: 0.78rem;
             font-weight: 700;
         }
 
         .etapa.ativa {
-            color: #b00000;
-            background-color: white;
+            color: #a00000;
+            background-color: #fff;
         }
 
         .linha {
-            width: 35px;
+            width: 36px;
             height: 3px;
             background-color: rgba(255, 255, 255, 0.35);
         }
 
         .linha.ativa {
-            background-color: white;
+            background-color: #fff;
         }
 
         .calendario {
             width: 100%;
+            margin-top: 8px;
             padding: 14px;
-            margin-top: 10px;
             color: #333;
-            background-color: rgba(255, 255, 255, 0.97);
+            background-color: rgba(255, 255, 255, 0.98);
             border-radius: 18px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
         }
 
         .calendario-topo {
+            margin-bottom: 12px;
             color: #a60000;
             font-weight: 800;
-            margin-bottom: 12px;
             text-transform: uppercase;
         }
 
@@ -239,41 +251,40 @@
 
         .dias-semana div {
             padding: 5px 0;
-            font-size: 0.72rem;
+            color: #777;
+            font-size: 0.7rem;
             font-weight: 800;
-            color: #888;
+        }
+
+        .dia,
+        .dia-vazio {
+            aspect-ratio: 1;
+            min-width: 0;
         }
 
         .dia {
-            aspect-ratio: 1;
-            min-width: 0;
             padding: 0;
-            border-radius: 10px;
-            background-color: #f2f2f2;
             color: #444;
+            background-color: #f0f0f0;
+            border-radius: 9px;
             font-size: 0.82rem;
             box-shadow: none;
         }
 
-        .dia:hover {
-            color: white;
-            background-color: #d32f2f;
+        .dia:hover,
+        .dia.selecionado {
+            color: #fff;
+            background-color: #a60000;
         }
 
         .dia.selecionado {
-            color: white;
-            background-color: #a60000;
-            transform: scale(1.06);
-            box-shadow: 0 4px 10px rgba(166, 0, 0, 0.35);
-        }
-
-        .dia-vazio {
-            aspect-ratio: 1;
+            transform: scale(1.07);
+            box-shadow: 0 4px 10px rgba(166, 0, 0, 0.3);
         }
 
         .secao-horario {
             width: 100%;
-            margin-top: 18px;
+            margin-top: 17px;
         }
 
         .secao-horario label {
@@ -285,27 +296,24 @@
         #horario {
             width: 100%;
             padding: 12px;
-            border: 2px solid white;
-            border-radius: 14px;
-            background-color: rgba(255, 255, 255, 0.95);
             color: #333;
+            background-color: #fff;
+            border: 2px solid #fff;
+            border-radius: 14px;
             font-size: 1rem;
             text-align: center;
             outline: none;
         }
 
-        .btn-continuar,
-        .btn-finalizar,
-        .btn-recomecar {
+        .btn-principal {
             width: 100%;
-            margin-top: 18px;
-            color: #b00000;
-            background-color: white;
+            margin-top: 16px;
+            color: #a00000;
+            background-color: #fff;
             box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25);
         }
 
-        .btn-continuar:disabled,
-        .btn-finalizar:disabled {
+        .btn-principal:disabled {
             opacity: 0.5;
             cursor: not-allowed;
             transform: none;
@@ -313,25 +321,25 @@
 
         .erro-etapa {
             min-height: 22px;
-            margin-top: 10px;
+            margin-top: 9px;
             color: #fff3a6;
-            font-weight: 700;
             font-size: 0.86rem;
+            font-weight: 700;
         }
 
         .opcoes-jantar {
             width: 100%;
+            margin-top: 15px;
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 10px;
-            margin-top: 16px;
         }
 
         .opcao-jantar {
-            min-height: 110px;
-            padding: 12px 8px;
+            min-height: 106px;
+            padding: 11px 7px;
             color: #333;
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: rgba(255, 255, 255, 0.97);
             border: 3px solid transparent;
             border-radius: 18px;
             display: flex;
@@ -341,35 +349,30 @@
             box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
         }
 
-        .opcao-jantar:hover {
-            background-color: white;
-        }
-
         .opcao-jantar.selecionado {
-            color: #9c0000;
-            border-color: #ffe066;
+            color: #920000;
             background-color: #fff8dd;
+            border-color: #ffe066;
             transform: scale(1.03);
         }
 
         .icone-jantar {
-            display: block;
-            font-size: 2rem;
             margin-bottom: 6px;
+            font-size: 2rem;
         }
 
         .nome-jantar {
             font-size: 0.83rem;
-            line-height: 1.2;
             font-weight: 800;
+            line-height: 1.2;
         }
 
         .resumo {
             width: 100%;
+            margin-top: 14px;
             padding: 20px;
-            margin-top: 15px;
             color: #333;
-            background-color: rgba(255, 255, 255, 0.97);
+            background-color: rgba(255, 255, 255, 0.98);
             border-radius: 20px;
             text-align: left;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
@@ -388,7 +391,7 @@
             display: block;
             margin-bottom: 4px;
             color: #a60000;
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             font-weight: 800;
             text-transform: uppercase;
         }
@@ -399,8 +402,8 @@
 
         .agradecimento {
             margin-top: 18px;
-            line-height: 1.5;
             font-weight: 600;
+            line-height: 1.5;
         }
 
         .coracoes {
@@ -409,10 +412,26 @@
             animation: pulsar 1.5s infinite;
         }
 
+        .confete {
+            position: fixed;
+            top: -25px;
+            z-index: 999;
+            pointer-events: none;
+            animation: cair linear forwards;
+        }
+
+        @keyframes cair {
+            to {
+                transform: translateY(110vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
         @media (max-width: 420px) {
             body {
                 padding: 0;
-                background-color: #780000;
+                background: #780000;
+                align-items: stretch;
             }
 
             .phone-container {
@@ -420,6 +439,7 @@
                 min-height: 100vh;
                 border: none;
                 border-radius: 0;
+                box-shadow: none;
             }
 
             .phone-container::before {
@@ -428,7 +448,27 @@
 
             .screen {
                 min-height: 100vh;
-                padding-top: 30px;
+                padding: 28px 20px;
+            }
+        }
+
+        @media (max-width: 350px) {
+            .screen {
+                padding-left: 14px;
+                padding-right: 14px;
+            }
+
+            .dias-semana,
+            .dias-mes {
+                gap: 3px;
+            }
+
+            .btn-sim {
+                left: calc(50% - 112px);
+            }
+
+            .btn-nao {
+                left: calc(50% + 22px);
             }
         }
     </style>
@@ -438,7 +478,7 @@
 
     <main class="phone-container">
 
-        <!-- TELA INICIAL -->
+        <!-- ETAPA 1: CONVITE -->
 
         <section class="screen" id="telaConvite">
 
@@ -447,7 +487,7 @@
             <h1>Convite especial</h1>
 
             <p class="subtitulo">
-                Preparei uma noite especial para nós.
+                Preparei uma noite especial para nós.<br>
                 Você aceita sair comigo?
             </p>
 
@@ -456,7 +496,7 @@
                 <button
                     type="button"
                     class="btn-sim"
-                    onclick="aceitarConvite()"
+                    id="btnSim"
                 >
                     SIM 😍
                 </button>
@@ -465,8 +505,6 @@
                     type="button"
                     class="btn-nao"
                     id="btnNao"
-                    onclick="clicouNoNao()"
-                    onmouseenter="fugirDoMouse()"
                 >
                     NÃO
                 </button>
@@ -477,7 +515,7 @@
 
         </section>
 
-        <!-- TELA DO CALENDÁRIO -->
+        <!-- ETAPA 2: DATA E HORÁRIO -->
 
         <section class="screen hidden" id="telaCalendario">
 
@@ -492,7 +530,8 @@
             <h2>Escolha nossa data</h2>
 
             <p class="subtitulo">
-                Selecione um dia de novembro de 2026 e o melhor horário.
+                Selecione um dia de novembro de 2026
+                e o melhor horário.
             </p>
 
             <div class="calendario">
@@ -521,7 +560,7 @@
                     Escolha o horário:
                 </label>
 
-                <select id="horario" onchange="validarDataHorario()">
+                <select id="horario">
                     <option value="">Selecione um horário</option>
                     <option value="18:00">18:00</option>
                     <option value="18:30">18:30</option>
@@ -540,9 +579,8 @@
 
             <button
                 type="button"
-                class="btn-continuar"
-                id="btnContinuarCalendario"
-                onclick="irParaJantar()"
+                class="btn-principal"
+                id="btnContinuar"
                 disabled
             >
                 Continuar 🍽️
@@ -550,7 +588,7 @@
 
         </section>
 
-        <!-- TELA DAS OPÇÕES DE JANTAR -->
+        <!-- ETAPA 3: JANTAR -->
 
         <section class="screen hidden" id="telaJantar">
 
@@ -565,7 +603,8 @@
             <h2>O que vamos jantar?</h2>
 
             <p class="subtitulo">
-                Escolha o tipo de jantar que mais combina com a nossa noite.
+                Escolha o tipo de jantar que mais combina
+                com a nossa noite.
             </p>
 
             <div class="opcoes-jantar">
@@ -575,10 +614,9 @@
                     class="opcao-jantar"
                     data-jantar="Jantar italiano"
                     data-icone="🍝"
-                    onclick="selecionarJantar(this)"
                 >
                     <span class="icone-jantar">🍝</span>
-                    <span class="nome-jantar">Jantar italiano</span>
+                    <span class="nome-jantar">Italiano</span>
                 </button>
 
                 <button
@@ -586,7 +624,6 @@
                     class="opcao-jantar"
                     data-jantar="Sushi e comida japonesa"
                     data-icone="🍣"
-                    onclick="selecionarJantar(this)"
                 >
                     <span class="icone-jantar">🍣</span>
                     <span class="nome-jantar">Japonês</span>
@@ -597,7 +634,6 @@
                     class="opcao-jantar"
                     data-jantar="Hambúrguer artesanal"
                     data-icone="🍔"
-                    onclick="selecionarJantar(this)"
                 >
                     <span class="icone-jantar">🍔</span>
                     <span class="nome-jantar">Hambúrguer</span>
@@ -608,7 +644,6 @@
                     class="opcao-jantar"
                     data-jantar="Fondue para casal"
                     data-icone="🫕"
-                    onclick="selecionarJantar(this)"
                 >
                     <span class="icone-jantar">🫕</span>
                     <span class="nome-jantar">Fondue</span>
@@ -619,7 +654,6 @@
                     class="opcao-jantar"
                     data-jantar="Pizza especial"
                     data-icone="🍕"
-                    onclick="selecionarJantar(this)"
                 >
                     <span class="icone-jantar">🍕</span>
                     <span class="nome-jantar">Pizza</span>
@@ -630,7 +664,6 @@
                     class="opcao-jantar"
                     data-jantar="Surpresa do chef"
                     data-icone="👨‍🍳"
-                    onclick="selecionarJantar(this)"
                 >
                     <span class="icone-jantar">👨‍🍳</span>
                     <span class="nome-jantar">Surpresa do chef</span>
@@ -642,9 +675,8 @@
 
             <button
                 type="button"
-                class="btn-finalizar"
+                class="btn-principal"
                 id="btnFinalizar"
-                onclick="mostrarResumo()"
                 disabled
             >
                 Finalizar escolha ❤️
@@ -652,7 +684,7 @@
 
         </section>
 
-        <!-- TELA DO RESUMO -->
+        <!-- ETAPA 4: RESUMO -->
 
         <section class="screen hidden" id="telaResumo">
 
@@ -716,8 +748,8 @@
 
             <button
                 type="button"
-                class="btn-recomecar"
-                onclick="reiniciarConvite()"
+                class="btn-principal"
+                id="btnRecomecar"
             >
                 Escolher novamente
             </button>
@@ -727,272 +759,244 @@
     </main>
 
     <script>
+        "use strict";
+
         let diaSelecionado = null;
         let horarioSelecionado = "";
         let jantarSelecionado = "";
         let iconeJantarSelecionado = "";
 
+        const btnSim = document.getElementById("btnSim");
         const btnNao = document.getElementById("btnNao");
         const areaBotoes = document.getElementById("areaBotoes");
         const mensagemErro = document.getElementById("mensagemErro");
+        const horario = document.getElementById("horario");
+        const btnContinuar = document.getElementById("btnContinuar");
+        const btnFinalizar = document.getElementById("btnFinalizar");
+        const btnRecomecar = document.getElementById("btnRecomecar");
 
         function mostrarTela(idTela) {
-            const telas = document.querySelectorAll(".screen");
-
-            telas.forEach(function (tela) {
+            document.querySelectorAll(".screen").forEach(function (tela) {
                 tela.classList.add("hidden");
             });
 
-            const telaSelecionada =
-                document.getElementById(idTela);
+            document.getElementById(idTela).classList.remove("hidden");
 
-            telaSelecionada.classList.remove("hidden");
-
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
+            window.scrollTo(0, 0);
         }
 
         function aceitarConvite() {
             mensagemErro.textContent = "";
-
             gerarCalendario();
-
             mostrarTela("telaCalendario");
         }
 
-        function fugirDoMouse() {
+        function exibirMensagemNao() {
+            mensagemErro.textContent =
+                "Que isso Beatriz, clica no outro kkk 😂";
+        }
+
+        function moverBotaoNao() {
+            exibirMensagemNao();
+
             const larguraArea = areaBotoes.clientWidth;
             const alturaArea = areaBotoes.clientHeight;
-
             const larguraBotao = btnNao.offsetWidth;
             const alturaBotao = btnNao.offsetHeight;
 
-            const limiteX = Math.max(
-                0,
-                larguraArea - larguraBotao
-            );
+            const limiteX = Math.max(0, larguraArea - larguraBotao);
+            const limiteY = Math.max(0, alturaArea - alturaBotao);
 
-            const limiteY = Math.max(
-                0,
-                alturaArea - alturaBotao
-            );
-
-            const novaPosicaoX = Math.random() * limiteX;
-            const novaPosicaoY = Math.random() * limiteY;
+            const novaPosicaoX = Math.floor(Math.random() * limiteX);
+            const novaPosicaoY = Math.floor(Math.random() * limiteY);
 
             btnNao.style.left = novaPosicaoX + "px";
             btnNao.style.top = novaPosicaoY + "px";
-
-            mensagemErro.textContent =
-                "Que isso, Beatriz? Clica no outro kkk 😂";
         }
 
-        function clicouNoNao() {
-            mensagemErro.textContent =
-                "Que isso, Beatriz? Clica no outro kkk 😂";
+        btnSim.addEventListener("click", aceitarConvite);
 
-            fugirDoMouse();
-        }
+        btnNao.addEventListener("mouseenter", function () {
+            moverBotaoNao();
+        });
+
+        btnNao.addEventListener(
+            "touchstart",
+            function (evento) {
+                evento.preventDefault();
+                moverBotaoNao();
+            },
+            { passive: false }
+        );
+
+        btnNao.addEventListener("click", function (evento) {
+            evento.preventDefault();
+            moverBotaoNao();
+        });
 
         function gerarCalendario() {
-            const containerDias =
-                document.getElementById("diasMes");
+            const diasMes = document.getElementById("diasMes");
 
-            containerDias.innerHTML = "";
+            diasMes.innerHTML = "";
 
             const ano = 2026;
-            const mesNovembro = 10;
+            const mes = 10;
+            const primeiroDiaSemana = new Date(ano, mes, 1).getDay();
+            const totalDias = new Date(ano, mes + 1, 0).getDate();
 
-            const primeiroDia = new Date(
-                ano,
-                mesNovembro,
-                1
-            ).getDay();
-
-            const quantidadeDias = new Date(
-                ano,
-                mesNovembro + 1,
-                0
-            ).getDate();
-
-            for (
-                let espaco = 0;
-                espaco < primeiroDia;
-                espaco++
-            ) {
-                const diaVazio =
-                    document.createElement("div");
-
-                diaVazio.className = "dia-vazio";
-
-                containerDias.appendChild(diaVazio);
+            for (let i = 0; i < primeiroDiaSemana; i++) {
+                const vazio = document.createElement("div");
+                vazio.className = "dia-vazio";
+                diasMes.appendChild(vazio);
             }
 
-            for (
-                let dia = 1;
-                dia <= quantidadeDias;
-                dia++
-            ) {
-                const botaoDia =
-                    document.createElement("button");
+            for (let dia = 1; dia <= totalDias; dia++) {
+                const botaoDia = document.createElement("button");
 
                 botaoDia.type = "button";
                 botaoDia.className = "dia";
                 botaoDia.textContent = dia;
-
-                botaoDia.addEventListener(
-                    "click",
-                    function () {
-                        selecionarDia(dia, botaoDia);
-                    }
+                botaoDia.setAttribute(
+                    "aria-label",
+                    dia + " de novembro de 2026"
                 );
 
-                containerDias.appendChild(botaoDia);
+                botaoDia.addEventListener("click", function () {
+                    selecionarDia(dia, botaoDia);
+                });
+
+                diasMes.appendChild(botaoDia);
             }
         }
 
         function selecionarDia(dia, elemento) {
-            const todosOsDias =
-                document.querySelectorAll(".dia");
-
-            todosOsDias.forEach(function (botao) {
+            document.querySelectorAll(".dia").forEach(function (botao) {
                 botao.classList.remove("selecionado");
             });
 
             elemento.classList.add("selecionado");
-
             diaSelecionado = dia;
 
-            document.getElementById(
-                "erroCalendario"
-            ).textContent = "";
+            document.getElementById("erroCalendario").textContent = "";
 
             validarDataHorario();
         }
 
         function validarDataHorario() {
-            const horario =
-                document.getElementById("horario").value;
+            horarioSelecionado = horario.value;
 
-            const botaoContinuar =
-                document.getElementById(
-                    "btnContinuarCalendario"
-                );
-
-            horarioSelecionado = horario;
-
-            if (diaSelecionado && horarioSelecionado) {
-                botaoContinuar.disabled = false;
-
-                document.getElementById(
-                    "erroCalendario"
-                ).textContent = "";
-            } else {
-                botaoContinuar.disabled = true;
-            }
+            btnContinuar.disabled = !(
+                diaSelecionado &&
+                horarioSelecionado
+            );
         }
 
-        function irParaJantar() {
+        horario.addEventListener("change", validarDataHorario);
+
+        btnContinuar.addEventListener("click", function () {
             if (!diaSelecionado || !horarioSelecionado) {
-                document.getElementById(
-                    "erroCalendario"
-                ).textContent =
+                document.getElementById("erroCalendario").textContent =
                     "Escolha o dia e o horário para continuar.";
 
                 return;
             }
 
             mostrarTela("telaJantar");
-        }
+        });
 
-        function selecionarJantar(elemento) {
-            const opcoes =
-                document.querySelectorAll(".opcao-jantar");
+        document.querySelectorAll(".opcao-jantar").forEach(
+            function (opcao) {
+                opcao.addEventListener("click", function () {
+                    document.querySelectorAll(".opcao-jantar").forEach(
+                        function (item) {
+                            item.classList.remove("selecionado");
+                        }
+                    );
 
-            opcoes.forEach(function (opcao) {
-                opcao.classList.remove("selecionado");
-            });
+                    opcao.classList.add("selecionado");
 
-            elemento.classList.add("selecionado");
+                    jantarSelecionado = opcao.dataset.jantar;
+                    iconeJantarSelecionado = opcao.dataset.icone;
 
-            jantarSelecionado =
-                elemento.dataset.jantar;
+                    btnFinalizar.disabled = false;
 
-            iconeJantarSelecionado =
-                elemento.dataset.icone;
+                    document.getElementById(
+                        "erroJantar"
+                    ).textContent = "";
+                });
+            }
+        );
 
-            document.getElementById(
-                "btnFinalizar"
-            ).disabled = false;
-
-            document.getElementById(
-                "erroJantar"
-            ).textContent = "";
-        }
-
-        function mostrarResumo() {
+        btnFinalizar.addEventListener("click", function () {
             if (!jantarSelecionado) {
-                document.getElementById(
-                    "erroJantar"
-                ).textContent =
+                document.getElementById("erroJantar").textContent =
                     "Escolha uma opção de jantar.";
 
                 return;
             }
 
-            document.getElementById(
-                "resumoData"
-            ).textContent =
+            document.getElementById("resumoData").textContent =
                 diaSelecionado + " de novembro de 2026";
 
-            document.getElementById(
-                "resumoHorario"
-            ).textContent =
+            document.getElementById("resumoHorario").textContent =
                 horarioSelecionado;
 
-            document.getElementById(
-                "resumoJantar"
-            ).textContent =
-                iconeJantarSelecionado +
-                " " +
-                jantarSelecionado;
+            document.getElementById("resumoJantar").textContent =
+                iconeJantarSelecionado + " " + jantarSelecionado;
 
             mostrarTela("telaResumo");
+            criarConfetes();
+        });
+
+        function criarConfetes() {
+            const simbolos = ["❤️", "✨", "💖", "🎉"];
+
+            for (let i = 0; i < 35; i++) {
+                const confete = document.createElement("span");
+
+                confete.className = "confete";
+                confete.textContent =
+                    simbolos[Math.floor(Math.random() * simbolos.length)];
+
+                confete.style.left = Math.random() * 100 + "vw";
+                confete.style.fontSize =
+                    12 + Math.random() * 17 + "px";
+                confete.style.animationDuration =
+                    2.5 + Math.random() * 2.5 + "s";
+                confete.style.animationDelay =
+                    Math.random() * 1.5 + "s";
+
+                document.body.appendChild(confete);
+
+                window.setTimeout(function () {
+                    confete.remove();
+                }, 6500);
+            }
         }
 
-        function reiniciarConvite() {
+        btnRecomecar.addEventListener("click", function () {
             diaSelecionado = null;
             horarioSelecionado = "";
             jantarSelecionado = "";
             iconeJantarSelecionado = "";
 
-            document.getElementById(
-                "horario"
-            ).value = "";
+            horario.value = "";
+            btnContinuar.disabled = true;
+            btnFinalizar.disabled = true;
 
-            document.getElementById(
-                "btnContinuarCalendario"
-            ).disabled = true;
-
-            document.getElementById(
-                "btnFinalizar"
-            ).disabled = true;
-
-            document.querySelectorAll(
-                ".opcao-jantar"
-            ).forEach(function (opcao) {
-                opcao.classList.remove("selecionado");
-            });
+            document.querySelectorAll(".opcao-jantar").forEach(
+                function (opcao) {
+                    opcao.classList.remove("selecionado");
+                }
+            );
 
             mensagemErro.textContent = "";
 
-            btnNao.style.left = "calc(50% + 25px)";
+            btnNao.style.left = "calc(50% + 26px)";
             btnNao.style.top = "25px";
 
             mostrarTela("telaConvite");
-        }
+        });
     </script>
 
 </body>
